@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Amount" representedClassName="Amount" syncable="YES">
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="malts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Malt" inverseName="amount" inverseEntity="Malt" syncable="YES"/>
+    </entity>
+    <entity name="Beer" representedClassName="Beer" syncable="YES">
+        <attribute name="brewersTips" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contributedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionField" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstBrewed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagline" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="beer" inverseEntity="Ingredient" syncable="YES"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="beer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Beer" inverseName="ingredients" inverseEntity="Beer" syncable="YES"/>
+        <relationship name="malt" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Malt" inverseName="ingredients" inverseEntity="Malt" syncable="YES"/>
+    </entity>
+    <entity name="Malt" representedClassName="Malt" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="sync.isPrimaryKey" value="true"/>
+            </userInfo>
+        </attribute>
+        <relationship name="amount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Amount" inverseName="malts" inverseEntity="Amount" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="malt" inverseEntity="Ingredient" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Beer" positionX="135" positionY="-180" width="128" height="178"/>
+        <element name="Malt" positionX="547" positionY="-45" width="128" height="88"/>
+        <element name="Amount" positionX="718" positionY="2" width="128" height="88"/>
+        <element name="Ingredient" positionX="369" positionY="-81" width="128" height="88"/>
+    </elements>
+</model>
